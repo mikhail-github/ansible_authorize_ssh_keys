@@ -1,3 +1,10 @@
 ---
 
+- name: Add a ssh public key to authorized_key file
+  authorized_key:
+          key: "{{ item }}"
+          key_options: "{{ ssh_key_options }}" 
+          state: present
+          user: "{{ ssh_user }}"
+  with_items: "{{ ssh_keys }}"
 
